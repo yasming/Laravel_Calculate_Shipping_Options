@@ -17,10 +17,10 @@ class CreateShippingOptionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->float('constant_for_delivery_fee');
-            $table->bigint('max_height');
-            $table->bigint('min_height');
-            $table->bigint('max_width');
-            $table->bigint('min_width');
+            $table->bigInteger('max_height');
+            $table->bigInteger('min_height');
+            $table->bigInteger('max_width');
+            $table->bigInteger('min_width');
             $table->integer('deadline');
             $table->timestamps();
         });
