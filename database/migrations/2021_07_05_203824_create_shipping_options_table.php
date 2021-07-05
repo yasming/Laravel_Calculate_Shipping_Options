@@ -15,11 +15,12 @@ class CreateShippingOptionsTable extends Migration
     {
         Schema::create('shipping_options', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->float('constant_for_delivery_fee');
             $table->bigint('max_height');
             $table->bigint('min_height');
-            $table->bigint('width_height');
-            $table->bigint('width_height');
+            $table->bigint('max_width');
+            $table->bigint('min_width');
             $table->integer('deadline');
             $table->timestamps();
         });
