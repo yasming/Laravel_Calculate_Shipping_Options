@@ -18,9 +18,9 @@ class CalculateDeliveryFeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'peso'             => 'required|min:0',
-            'dimensao.altura'  => 'required|min:0',
-            'dimensao.largura' => 'required|min:0',
+            'peso'             => 'required|numeric|gt:0',
+            'dimensao.altura'  => 'required|numeric|gt:0',
+            'dimensao.largura' => 'required|numeric|gt:0',
             'dimensao'         => new CheckIfSizeIsInAnyShippingOptionsRule
         ];
     }
