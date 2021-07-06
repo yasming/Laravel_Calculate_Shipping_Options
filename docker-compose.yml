@@ -1,4 +1,14 @@
 services:
+    dependencies_installation:
+        image: ambientum/php:8.0-nginx
+        container_name: dependencies_installation_container
+        volumes:
+          - ./:/app
+        command: bash /app/docker/dependencies/docker-dependencies.sh
+        networks:
+            - mysql-network
+        depends_on: 
+            - mysql
     mysql:
       image: mysql:latest
       container_name: mysql_container
@@ -10,3 +20,21 @@ services:
         - ./docker/mysql:/docker-entrypoint-initdb.d
       ports:
         - "3306:3306"
+      networks:
+          - mysql-network
+
+    nginx:
+        image: ambientum/php:8.0-nginx
+        volumes:
+          - ./:/var/www/app
+        ports: 
+          - 80:8080
+        container_name: nginx_container
+        depends_on: 
+          - mysql
+        networks:
+          - mysql-network
+
+networks: 
+  mysql-network: 
+    driver: bridge
