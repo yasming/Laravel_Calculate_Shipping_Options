@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/calculate-delivery-fee', CalculateDeliveryFeeController::class);
+Route::post('/calculate-delivery-fee', CalculateDeliveryFeeController::class)->name('api.calculate-delivery-fee');

@@ -1,3 +1,7 @@
 {
-  "The size of the product is not supported for none of our shipping options": "O tamanho do produto não se encaixa nos tamanhos suportados por nossas opções de frete"
+  "The size of the product is not supported for none of our shipping options": "O tamanho do produto não se encaixa nos tamanhos suportados por nossas opções de frete",
+  "The product weight is required": "O peso do produto é obrigatório",
+  "The height of the product is required": "A altura do produto é obrigatória",
+  "The width of the product is required": "A largura do produto é obrigatória",
+  "The dimension of the product is required": "As dimensoes do produto são obrigatórias"
 }

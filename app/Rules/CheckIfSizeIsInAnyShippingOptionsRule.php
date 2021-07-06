@@ -15,6 +15,7 @@ class CheckIfSizeIsInAnyShippingOptionsRule implements Rule
 
     public function passes($attribute, $value)
     {
+        if(!isset($value['altura']) || !isset($value['largura'])) return false;
         return $this->checkIfValueIsValidForAnyShippingOption($value);
     }
 

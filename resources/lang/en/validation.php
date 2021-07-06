@@ -151,6 +151,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        "dimensao.altura"  => 'height',
+        "dimensao.largura" => 'width',
+    ],
 
 ];

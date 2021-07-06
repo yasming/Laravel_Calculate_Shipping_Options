@@ -21,7 +21,17 @@ class CalculateDeliveryFeeRequest extends FormRequest
             'peso'             => 'required|numeric|gt:0',
             'dimensao.altura'  => 'required|numeric|gt:0',
             'dimensao.largura' => 'required|numeric|gt:0',
-            'dimensao'         => new CheckIfSizeIsInAnyShippingOptionsRule
+            'dimensao'         => ['required', new CheckIfSizeIsInAnyShippingOptionsRule]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'peso.required'             => __('The product weight is required'),
+            'dimensao.altura.required'  => __('The height of the product is required'),
+            'dimensao.largura.required' => __('The width of the product is required'),
+            'dimensao.required'         => __('The dimension of the product is required')
         ];
     }
 }
