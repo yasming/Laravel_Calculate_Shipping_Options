@@ -14,9 +14,9 @@ class ShippingOptionsService
         $this->repository = $repository;
     }
 
-    public function getShippingOptionsForProduct($datasOfProduct) : Collection
+    public function getShippingOptionsToProduct($datasOfProduct) : Collection
     {
-        return $this->repository->getShippingOptionsForProduct($datasOfProduct);
+        return $this->repository->getShippingOptionsToProduct($datasOfProduct);
     }
 
 }

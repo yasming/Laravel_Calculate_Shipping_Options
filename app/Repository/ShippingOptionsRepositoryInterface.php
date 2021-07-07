@@ -5,7 +5,7 @@ use Illuminate\Support\Collection;
 
 interface ShippingOptionsRepositoryInterface
 {
-    public function getShippingOptionsForProduct($datasOfProduct): Collection;
+    public function getShippingOptionsToProduct($datasOfProduct): Collection;
     public function all(): Collection;
 
 }

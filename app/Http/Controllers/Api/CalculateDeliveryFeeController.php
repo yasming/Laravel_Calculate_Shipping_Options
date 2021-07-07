@@ -12,7 +12,7 @@ class CalculateDeliveryFeeController extends Controller
 {
     public function __invoke(CalculateDeliveryFeeRequest $request, ShippingOptionsService $service)
     {
-        $shippingOptions = $service->getShippingOptionsForProduct($request);
+        $shippingOptions = $service->getShippingOptionsToProduct($request);
         return response()->json(new CalculateDeliveryFeeResourceCollection(
             $this->formatResponseToApi($shippingOptions,$request)
         ));
