@@ -21,20 +21,8 @@ class CheckIfSizeIsInAnyShippingOptionsRule implements Rule
 
     private function checkIfValueIsValidForAnyShippingOption($value) : bool
     {
-        $shippingOptions = ShippingOptions::select('max_height','min_height','max_width','min_width')->get();
-        return $shippingOptions->filter(function ($option) use ($value){
-            return $this->checkIfHeightIsValid($option,$value) && $this->checkIWidthIsValid($option,$value);
-        })->count() > 0;
-    }
-
-    private function checkIfHeightIsValid($option,$value) : bool
-    {
-        return $value['altura'] < $option->max_height && $option->min_height < $value['altura'];
-    }
-
-    private function checkIWidthIsValid($option,$value) : bool
-    {
-        return $value['largura'] < $option->max_width && $option->min_width < $value['largura']; 
+        $shippingOptions = ShippingOptions::all();
+        return $shippingOptions->getShippingOptionsToProduct($value)->count() > 0;
     }
 
     public function message()

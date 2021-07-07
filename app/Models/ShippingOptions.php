@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Collections\ShippingOptionsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,4 +19,9 @@ class ShippingOptions extends Model
         'min_width',
         'deadline'                  
     ];
+
+    public function newCollection(array $models = [])
+    {
+        return new ShippingOptionsCollection($models);
+    }
 }

@@ -105,4 +105,44 @@ class CalculateDeliveryFeeControllerTest extends TestCase
             'dimensao' => [__('The size of the product is not supported for none of our shipping options')]
         ])->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
+
+    public function test_it_should_be_able_to_return_shipping_options()
+    {
+        $this->post(route('api.calculate-delivery-fee'), [
+            'dimensao' => [
+                'altura'  => 102,
+                'largura' => 40
+            ],
+            'peso' => 400
+        ])->assertJson([
+            'data' => [
+                [
+                    "nome"        => "Entrega Ninja",
+                    "valor_frete" => 12,
+                    "prazo_dias"  => 6
+                ],
+                [
+                    "nome"        => "Entrega KaBuM",
+                    "valor_frete" => 8,
+                    "prazo_dias"  => 4
+                ]
+            ]
+        ])->assertStatus(Response::HTTP_OK);
+
+        $this->post(route('api.calculate-delivery-fee'), [
+            'dimensao' => [
+                'altura'  => 152,
+                'largura' => 50
+            ],
+            'peso' => 850
+        ])->assertJson([
+            'data' => [
+                [
+                    "nome"        => "Entrega Ninja",
+                    "valor_frete" => 25.50,
+                    "prazo_dias"  => 6
+                ],
+            ]
+        ])->assertStatus(Response::HTTP_OK);
+    }
 }

@@ -13,15 +13,13 @@ class ShippingOptionsRepository extends BaseRepository implements ShippingOption
        parent::__construct($model);
    }
 
-    public function calculate($datasOfProduct) : Collection
+    public function getShippingOptionsForProduct($datasOfProduct) : Collection
     {
-        $this->all();
-        return $this->repository->calculate($datasOfProduct);
+        return $this->all()->getShippingOptionsToProduct($datasOfProduct->all()['dimensao']);
     }
 
     public function all(): Collection
     {
         return $this->model->all();    
     }
-
 }
