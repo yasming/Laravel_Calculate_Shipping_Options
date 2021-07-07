@@ -12,23 +12,8 @@ class CalculateDeliveryFeeController extends Controller
 {
     public function __invoke(CalculateDeliveryFeeRequest $request, ShippingOptionsService $service)
     {
-        $shippingOptions = $service->getShippingOptionsToProduct($request);
         return response()->json(new CalculateDeliveryFeeResourceCollection(
-            $this->formatResponseToApi($shippingOptions,$request)
+            $service->getShippingOptionsToProduct($request)
         ));
-    }
-
-    private function formatResponseToApi($shippingOptions,$datasOfProduct) : Collection
-    {
-        $formattedResponseToApi = collect();
-        foreach($shippingOptions as $shippingOption)
-        {
-            $formattedResponseToApi->push([
-                'nome'        => $shippingOption->name,
-                'valor_frete' => round(($datasOfProduct->peso * $shippingOption->constant_for_delivery_fee) / 10.0,2),
-                'prazo_dias'  => $shippingOption->deadline
-            ]);
-        }
-        return $formattedResponseToApi;
     }
 }

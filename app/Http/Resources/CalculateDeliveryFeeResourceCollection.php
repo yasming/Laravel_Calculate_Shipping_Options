@@ -15,7 +15,13 @@ class CalculateDeliveryFeeResourceCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => $this->collection
+            'data' => $this->collection->map(function($shippingOption) use ($request) {
+                return [
+                    'nome'        => $shippingOption->name,
+                    'valor_frete' => round(($request->peso * $shippingOption->constant_for_delivery_fee) / 10.0,2),
+                    'prazo_dias'  => $shippingOption->deadline
+                ];
+            })
         ];
     }
 }
