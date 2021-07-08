@@ -23,7 +23,15 @@ https://app.swaggerhub.com/apis-docs/yasminguimaraes/CALCULATE_SHIPPING_OPTIONS/
 ### How to run project's locally
 
 ```
-after clone the project run docker-compose up and after all things be built the project will be able to be access on localhost:80
+after clone the project
+```
+
+```
+docker-compose up
+```
+
+```
+After all things be built the project will be able to be access on localhost:80
 ```
 
 ```
